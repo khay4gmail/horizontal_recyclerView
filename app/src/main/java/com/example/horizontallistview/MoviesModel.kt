@@ -1,6 +1,8 @@
 package com.example.horizontallistview
 
-class MoviesModel(title: String?, genre: String?, year: String?) {
+data class MoviesModel(var title: String?, var genre: String?, var year: String?) {
+
+   /*
 
     private var title: String
     private var genre: String
@@ -29,5 +31,7 @@ class MoviesModel(title: String?, genre: String?, year: String?) {
     fun setGenre(genre: String?) {
         this.genre = genre!!
     }
+
+    */
 
 }

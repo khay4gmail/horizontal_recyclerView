@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private val imagesList = intArrayOf(R.drawable.car1,R.drawable.cockpit1,R.drawable.plane1,R.drawable.plane2,R.drawable.plane3,R.drawable.plane4)
     private val textList = arrayOf("Item one details", "Item two details",
         "Item three details", "Item four details",
-        "Item file details", "Item six details")
+        "Item five details", "Item six details")
     private lateinit var moviesAdapter: MoviesAdapter
     private lateinit var cardsAdapter: CardsAdapter
 
@@ -21,16 +21,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         title = "KotlinApp"
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val carosal_recyclerView = findViewById<RecyclerView>(R.id.recyclerView_top)
+        val table_recyclerView = findViewById<RecyclerView>(R.id.recyclerView_bottom)
         moviesAdapter = MoviesAdapter(movieList)
         cardsAdapter = CardsAdapter(imagesList, textList)
-        val mLayoutManger = CenterScaleLinearLayoutManager(applicationContext)
-        mLayoutManger.orientation = LinearLayoutManager.HORIZONTAL
-        recyclerView.layoutManager = mLayoutManger
-        recyclerView.itemAnimator = DefaultItemAnimator()
+        val carosal_layoutManger = CenterScaleLinearLayoutManager(applicationContext)
+        val table_layoutManger = LinearLayoutManager(applicationContext)
+        carosal_layoutManger.orientation = LinearLayoutManager.HORIZONTAL
+        carosal_recyclerView.layoutManager = carosal_layoutManger
+        carosal_recyclerView.itemAnimator = DefaultItemAnimator()
+        table_recyclerView.layoutManager = table_layoutManger
+        table_recyclerView.itemAnimator = DefaultItemAnimator()
+        table_recyclerView.adapter = moviesAdapter
         val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerView)
-        recyclerView.adapter = cardsAdapter
+        snapHelper.attachToRecyclerView(carosal_recyclerView)
+        carosal_recyclerView.adapter = cardsAdapter
         prepareMovieData()
     }
 

@@ -26,12 +26,6 @@ class CardsAdapter(val imagesList: IntArray, val textList: Array<String>): Recyc
         holder.imageView.setImageResource(imagesList[position])
         holder.textView.text = textList[position]
     }
-
-    fun randomColor(): Int {
-        val rnd = Random()
-        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
-    }
-
 }
 
 class CardsViewHolder(view: View): RecyclerView.ViewHolder(view) {

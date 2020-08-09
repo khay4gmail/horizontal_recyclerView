@@ -12,7 +12,6 @@ class MoviesAdapter(val moviesList: List<MoviesModel>): RecyclerView.Adapter<Mov
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.movie_list, parent,false)
-
         return MoviesViewHolder(itemView)
     }
 
@@ -20,9 +19,9 @@ class MoviesAdapter(val moviesList: List<MoviesModel>): RecyclerView.Adapter<Mov
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         val movie = moviesList[position]
-        holder.title.text = movie.getTitle()
-        holder.genre.text = movie.getGenre()
-        holder.year.text = movie.getYear()
+        holder.title.text = movie.title
+        holder.genre.text = movie.genre
+        holder.year.text = movie.year
 
         holder.itemView.setBackgroundColor(randomColor())
     }

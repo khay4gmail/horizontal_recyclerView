@@ -79,14 +79,7 @@ class MainActivity : AppCompatActivity() {
         tableRecyclerview = findViewById<RecyclerView>(R.id.recyclerView_bottom)
 
         setupCarosalView()
-        tablesAdapter = TablesAdapter(timesTableList)
-        tableRecyclerview.adapter = tablesAdapter
-        val tableLayoutmanger = LinearLayoutManager(applicationContext)
-        tableRecyclerview.layoutManager = tableLayoutmanger
-        tableRecyclerview.itemAnimator = DefaultItemAnimator()
-
-        prepareTableDate()
-//        setupTableViewFor(TABLE)
+        setupTableViewFor(TABLE)
     }
 
     fun setupCarosalView() {
@@ -149,6 +142,7 @@ class MainActivity : AppCompatActivity() {
         }
         Log.d("timesTableContent", "$timesTableList")
         tablesAdapter.notifyDataSetChanged()
+        tableRecyclerview.layoutManager?.scrollToPosition(0)
     }
 
     private fun prepareMovieData() {
